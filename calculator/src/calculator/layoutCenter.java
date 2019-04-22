@@ -5,6 +5,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -12,14 +13,16 @@ import javax.swing.JPanel;
 public class layoutCenter extends JPanel implements ActionListener {
 
     String[] operations = {"/", "*", "-", "+", "=", "c"};
-    operations newOperation=new operations();
+    operations newOperation = new operations();
     JButton[] Button = new JButton[16];
     layoutTop topInCenter;
+  
 
     public layoutCenter() {
         setBackground(new Color(96, 111, 140));
         this.setLayout(new GridLayout(4, 4, 10, 10));
         this.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+     
         components();
     }
 
@@ -64,27 +67,33 @@ public class layoutCenter extends JPanel implements ActionListener {
 
         switch (nombreBoton) {
             case "/":
+                topInCenter.fieldResults.setText(topInCenter.fieldResults.getText() + "/");
                 break;
             case "*":
+            
+                topInCenter.fieldResults.setText("*");
                 break;
             case "-":
+
                 break;
             case "+":
-                double a=Double.valueOf(topInCenter.fieldResults.getText());
-                 topInCenter.fieldResults.setText("");
+
+    
                 break;
             case "=":
+
                 break;
             case "c":
+                topInCenter.fieldResults.setText("");
                 break;
             default:
-                System.out.println("ahi");
-                for (int i = 0; i <=9; i++) {
-                    System.out.println("---"+i);
-                    if (e.getSource()==Button[i]) {
-                      topInCenter.fieldResults.setText(topInCenter.fieldResults.getText()+Button[i].getText());
+
+                for (int i = 0; i <= 9; i++) {
+
+                    if (e.getSource() == Button[i]) {
+                        topInCenter.fieldResults.setText(topInCenter.fieldResults.getText() + Button[i].getText());
                     }
- 
+
                 }
                 break;
         }
